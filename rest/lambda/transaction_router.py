@@ -1,6 +1,7 @@
 import os
 import json
 from pymongo import MongoClient
+from bson.objectid import ObjectId
 from exa_py import Exa
 from openai import OpenAI
 
@@ -31,10 +32,11 @@ def lambda_handler(event, context):
         }
     
     try:
+        user_id = request_body["user_id"]
         client = MongoClient(mongo_uri)
         db = client.get_database("effipay")
         collection = db.get_collection("user")
-        user_data = collection.find_one({"_id": request_body["user_id"]})
+        user_data = collection.find_one({"_id": ObjectId(user_id)})
     except Exception as e:
         return {
             "statusCode": 500,
