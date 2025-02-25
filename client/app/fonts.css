@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'BauhausStd';
+  src: url('../public/assets/fonts/BauhausStd-Demi.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+.effipay-font {
+  font-family: 'BauhausStd';
+}
